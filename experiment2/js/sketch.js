@@ -40,7 +40,7 @@ function draw() {
    
    // Campfire Glow
    fill(255, 165, 0);
-   ellipse(200,355,70,30);
+   ellipse(400,355,70,30);
    
    // Draw particle
    let p = new Particle();
