@@ -17,7 +17,8 @@ function setup() {
     // resize canvas is the page is resized
     $(window).resize(function() {
         console.log("Resizing...");
-        resizeCanvas(canvasContainer.width(), canvasContainer.height());
+        //resizeCanvas(canvasContainer.width(), canvasContainer.height());
+        resizeCanvas(400, 400);
     });
     //Background
   for (let y = 0; y < height; y++) {
