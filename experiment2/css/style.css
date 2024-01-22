@@ -9,7 +9,7 @@ canvas {
 /* Center the canvas element on the page */
 body {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: left;
 }
 
