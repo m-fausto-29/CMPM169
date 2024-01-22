@@ -11,12 +11,12 @@ let particles = [];
 function setup() {
     // place our canvas, making it fit our container
     canvasContainer = $("#canvas-container");
-    let canvas = createCanvas(canvasContainer.width(), canvasContainer.height());
+    let canvas = createCanvas(canvasContainer.width(400), canvasContainer.height(400));
     canvas.parent("canvas-container");
     // resize canvas is the page is resized
     $(window).resize(function() {
         console.log("Resizing...");
-        resizeCanvas(canvasContainer.width(), canvasContainer.height());
+        resizeCanvas(canvasContainer.width(400), canvasContainer.height(400));
     });
     createCanvas(400, 400);
     //Background
