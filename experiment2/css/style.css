@@ -2,7 +2,7 @@
 
 /* Set the canvas element to be the full size of the window */
 canvas {
-    width: 100%;
+    width: 50%;
     height: 50%;
 }
 
