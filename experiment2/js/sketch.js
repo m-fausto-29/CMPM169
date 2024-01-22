@@ -18,6 +18,7 @@ function setup() {
         console.log("Resizing...");
         resizeCanvas(canvasContainer.width(), canvasContainer.height());
     });
+    createCanvas(400, 400);
     //Background
   for (let y = 0; y < height; y++) {
     let inter = map(y, 0, height, 0, 1);
