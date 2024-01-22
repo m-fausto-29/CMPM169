@@ -9,18 +9,18 @@
 let particles = [];
 // setup() function is called once when the program starts
 function setup() {
-    // place our canvas, making it fit our container
-    // canvasContainer = $("#canvas-container");
-    // let canvas = createCanvas(canvasContainer.width(400), canvasContainer.height(400));
-    // //let canvas = createCanvas(400, 400);
-    // canvas.parent("canvas-container");
-    // // resize canvas is the page is resized
-    // $(window).resize(function() {
-    //     console.log("Resizing...");
-    //     resizeCanvas(canvasContainer.width(), canvasContainer.height());
-    //     //resizeCanvas(400, 400);
-    // });
-    createCanvas(400, 400);
+    //place our canvas, making it fit our container
+    canvasContainer = $("#canvas-container");
+    let canvas = createCanvas(canvasContainer.width(400), canvasContainer.height(400));
+    //let canvas = createCanvas(400, 400);
+    canvas.parent("canvas-container");
+    // resize canvas is the page is resized
+    $(window).resize(function() {
+        console.log("Resizing...");
+        resizeCanvas(canvasContainer.width(), canvasContainer.height());
+        //resizeCanvas(400, 400);
+    });
+    //createCanvas(400, 400);
     //Background
   for (let y = 0; y < height; y++) {
     let inter = map(y, 0, height, 0, 1);
