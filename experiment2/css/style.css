@@ -2,8 +2,8 @@
 
 /* Set the canvas element to be the full size of the window */
 canvas {
-    width: 20%;
-    height: 30%;
+    width: 50%;
+    height: 50%;
 }
 
 /* Center the canvas element on the page */
@@ -14,6 +14,6 @@ body {
 }
 
 #canvas-container {
-    width: 30%;
-    height: 300px;
+    width: 50%;
+    height: 400px;
 }
