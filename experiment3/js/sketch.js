@@ -30,7 +30,8 @@ function draw() {
     b = n(w) * r; 
     c = n(t) * 6;
     d = n(t++ + 60) * 6;
-    stroke(w, 30);
+    //stroke(w, 30);
+    stroke('rgba(165,169,236,0.25)');
     //line(r, a, cos(c) * a + r , sin(c) * b+r);
     for(var x = r; x < windowWidth; x+=150){
         line(x, a, cos(c) * a + x , sin(c) * b+x); 
