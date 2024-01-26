@@ -31,5 +31,8 @@ function draw() {
     c = n(t) * 6;
     d = n(t++ + 60) * 6;
     stroke(w, 30);
-    line(r, a, cos(c) * a + r , sin(c) * b+r);
+    //line(r, a, cos(c) * a + r , sin(c) * b+r);
+    for(var x = r; x < windowWidth; x+=70){
+        line(x, a, cos(c) * a + x , sin(c) * b+x); 
+    }
 }
