@@ -32,7 +32,7 @@ function draw() {
     d = n(t++ + 60) * 6;
     stroke(w, 30);
     //line(r, a, cos(c) * a + r , sin(c) * b+r);
-    for(var x = r; x < windowWidth; x+=70){
+    for(var x = r; x < windowWidth; x+=150){
         line(x, a, cos(c) * a + x , sin(c) * b+x); 
     }
 }
