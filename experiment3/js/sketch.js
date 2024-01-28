@@ -18,7 +18,7 @@ function setup() {
         resizeCanvas(canvasContainer.width(), canvasContainer.height());
     });
     // create an instance of the class
-    createCanvas(w = min(windowWidth, windowHeight), w);
+    //createCanvas(w = min(windowWidth, windowHeight), w);
   
     // Background
     for (let y = 0; y < height; y++) {
@@ -52,12 +52,12 @@ function draw() {
     stroke('rgba(0,169,0,0.25)');
     
     // Mountains 
-     for (var x = 0; x < windowWidth; x += 2.3) {
+     for (var x = 0; x < width; x += 2.3) {
        beginShape();
-      for (var y = windowHeight; y > windowHeight-noise(x * 0.01)*600; y--) {
+      for (var y = height; y > height-noise(x * 0.01)*600; y--) {
         vertex(x,y);
       }
-       vertex(x, windowHeight);
+       vertex(x, height);
        endShape(CLOSE);
     }
     
@@ -73,7 +73,7 @@ function draw() {
     // Clouds
     makeCloud(cloudPos, 100);
     cloudPos++;
-    if(cloudPos > windowWidth){
+    if(cloudPos > width){
       cloudPos = -100;
     }
     
