@@ -30,7 +30,7 @@ function setup() {
     
     // Create a button and place it on the upper left hand corner
     let button = createButton('Click Me!');
-    button.position(50, 50);
+    button.position(100, 100);
     
     
     // Use the button to change the background color.
@@ -54,7 +54,7 @@ function draw() {
     // Mountains 
      for (var x = 0; x < width; x += 2.3) {
        beginShape();
-      for (var y = height; y > height-noise(x * 0.01)*600; y--) {
+      for (var y = height; y > height-noise(x * 0.01)*800; y--) {
         vertex(x,y);
       }
        vertex(x, height);
