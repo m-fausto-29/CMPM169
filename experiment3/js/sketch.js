@@ -4,7 +4,8 @@
 
 // Here is how you might set up an OOP p5.js project
 // Note that p5.js looks for a file called sketch.js
-
+//Global Variables
+let cloudPos = -100;
 // setup() function is called once when the program starts
 function setup() {
     // place our canvas, making it fit our container
@@ -17,23 +18,74 @@ function setup() {
         resizeCanvas(canvasContainer.width(), canvasContainer.height());
     });
     // create an instance of the class
-    //createCanvas(w = min(windowWidth, windowHeight), w);
-    w = min(windowWidth, windowHeight)
-    background(t = 0, 6, 60);
+    createCanvas(w = min(windowWidth, windowHeight), w);
+  
+    // Background
+    for (let y = 0; y < height; y++) {
+        let inter = map(y, 0, height, 0, 1);
+        let c = lerpColor(color(255), color(0,58,255), inter);
+        stroke(c);
+        line(0, y, width,y); 
+    }
+    
+    // Create a button and place it on the upper left hand corner
+    let button = createButton('Click Me!');
+    button.position(0, 30);
+    
+    
+    // Use the button to change the background color.
+    button.mousePressed(() => {
+        let c1 = color(random(100), random(150), random(255));
+        let c2 = color(random(150,200), random(200,220), random(255));
+        for (let y = 0; y < height; y++) {
+            let inter2 = map(y, 0, height, 0, 1);
+            let c = lerpColor(c1, c2, inter2);
+            stroke(c); 
+            line(0, y, width,y);
+        }
+    });
 }
 
 // draw() function is called repeatedly, it's the main animation loop
 function draw() {
-    n = noise;
-    r = w / 2; 
-    a = n(t + 9) * r; 
-    b = n(w) * r; 
-    c = n(t) * 6;
-    d = n(t++ + 60) * 6;
-    //stroke(w, 30);
-    stroke('rgba(165,169,236,0.25)');
-    //line(r, a, cos(c) * a + r , sin(c) * b+r);
-    for(var x = r; x < windowWidth; x+=150){
-        line(x, a, cos(c) * a + x , sin(c) * b+x); 
+  
+    stroke('rgba(0,169,0,0.25)');
+    
+    // Mountains 
+     for (var x = 0; x < windowWidth; x += 2.3) {
+       beginShape();
+      for (var y = windowHeight; y > windowHeight-noise(x * 0.01)*600; y--) {
+        vertex(x,y);
+      }
+       vertex(x, windowHeight);
+       endShape(CLOSE);
     }
-}
+    
+    // Ground
+    for (let i = height*3/4; i < height; i++) {
+      let inter1 = map(i,height*3/4 ,height ,0 ,1);
+      let c = lerpColor(color(0,100,0), color(163, 121, 100), inter1);
+      noStroke();
+      fill(c); 
+       rect(0,i,width,height /8);
+    }
+    
+    // Clouds
+    makeCloud(cloudPos, 100);
+    cloudPos++;
+    if(cloudPos > windowWidth){
+      cloudPos = -100;
+    }
+    
+  }
+  function makeCloud(x, y) {
+      noStroke();
+      fill(color(255));
+      
+      ellipse(x-35,y- 80/4,40,50)
+      ellipse(x+80/2,y-80/4,55,60) 
+      ellipse(x+80*3/8,y-80*3/8,50,50) 
+      ellipse(x+80*5/8,y-80*9/16,45,60)
+      ellipse(x+80-10,y-15,50,35)
+      ellipse(x+80-20,y,20,20)
+  }
