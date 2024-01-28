@@ -18,7 +18,7 @@ function setup() {
         resizeCanvas(canvasContainer.width(), canvasContainer.height());
     });
     // create an instance of the class
-    createCanvas(w = min(windowWidth, windowHeight), w);
+    //createCanvas(w = min(windowWidth, windowHeight), w);
   
     // Background
     for (let y = 0; y < height; y++) {
@@ -30,7 +30,7 @@ function setup() {
     
     // Create a button and place it on the upper left hand corner
     let button = createButton('Click Me!');
-    button.position(0, 30);
+    button.position(0, 50);
     
     
     // Use the button to change the background color.
