@@ -30,7 +30,7 @@ function setup() {
     
     // Create a button and place it on the upper left hand corner
     let button = createButton('Click Me!');
-    button.position(100, 100);
+    button.position(200, 200);
     
     
     // Use the button to change the background color.
