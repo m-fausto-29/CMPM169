@@ -6,6 +6,7 @@
 // Note that p5.js looks for a file called sketch.js
 //Global Variables
 let cloudPos = -100;
+let button;
 // setup() function is called once when the program starts
 function setup() {
     // place our canvas, making it fit our container
@@ -29,8 +30,8 @@ function setup() {
     }
     
     // Create a button and place it on the upper left hand corner
-    let button = createButton('Click Me!');
-    button.position(width/2, height/2);
+    button = createButton('Click Me!');
+    button.position(700, 100);
     
     
     // Use the button to change the background color.
