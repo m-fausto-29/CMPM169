@@ -31,7 +31,7 @@ function setup() {
     
     // Create a button and place it on the upper left hand corner
     button = createButton('Click Me!');
-    button.position(width-300, height-300);
+    button.position(width-300, height-500);
     
     
     // Use the button to change the background color.
