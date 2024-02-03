@@ -11,8 +11,10 @@ let cd;
 // Angle of rotation: the parameter that we'll animate!
 let angle = 0;
 function preload(){ //function necessary to preload the images
-  cdPlayer = createImg('./img/cd_player.png', 'adding a cd player') // add the name of the image exactly, then the alternate title/description
-  cd = createImg('./img/sony-cd-r.png', 'adding a cd')
+  // cdPlayer = createImg('./img/cd_player.png', 'adding a cd player') 
+  // cd = createImg('./img/sony-cd-r.png', 'adding a cd')
+  cdPlayer = loadImage("./img/cd_player.png");
+  cd = loadImage("./img/sony-cd-r.png");
 }
 
 // setup() function is called once when the program starts
@@ -31,16 +33,11 @@ function setup() {
   
     // Background
     for (let y = 0; y < height; y++) {
-        let inter = map(y, 0, height, 0, 1);
-        let c = lerpColor(color(255,192,203), color(135, 206, 235), inter);
-        stroke(c);
-        line(0, y, width,y); 
-    }
-    // cdPlayer.position(width/2, height/2); // adding the position so it appears on canvas
-    // cdPlayer.size(150, 150); // adjusts the width and height of the image
-    // cd.position(0, -10);
-    // cd.size(50, 50);
-    
+      let inter = map(y, 0, height, 0, 1);
+      let c = lerpColor(color(255,192,203), color(135, 206, 235), inter);
+      stroke(c);
+      line(0, y, width,y); 
+     }
 }
 
 function draw() {
