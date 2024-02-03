@@ -11,8 +11,8 @@ let cd;
 // Angle of rotation: the parameter that we'll animate!
 let angle = 0;
 function preload(){ //function necessary to preload the images
-  cdPlayer = createImg('cd_player.png', 'adding a cd player') // add the name of the image exactly, then the alternate title/description
-  cd = createImg('sony-cd-r.png', 'adding a cd')
+  cdPlayer = createImg('./img/cd_player.png', 'adding a cd player') // add the name of the image exactly, then the alternate title/description
+  cd = createImg('./img/sony-cd-r.png', 'adding a cd')
 }
 
 // setup() function is called once when the program starts
