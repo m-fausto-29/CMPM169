@@ -34,7 +34,7 @@ function setup() {
 
     // Creating the play/pause button
   button = createButton('play');
-  button.position((width/2)-10, 825);
+  button.position((width/2)-10, 1025);
   button.mousePressed(togglePlaying);
   
   // Initializing amplitude, frequency analysis, and angle mode
@@ -61,11 +61,11 @@ function draw() {
   fill(135, 206, 235);
   noStroke();
   ellipse(100,100, diam, diam);
-  ellipse(900,100, diam, diam);
+  ellipse(1100,100, diam, diam);
   fill(255,192,203);
   noStroke();
   ellipse(100,500, diam, diam);
-  ellipse(900,500, diam, diam);
+  ellipse(1100,500, diam, diam);
   
   // Setting up positioning of cd player image
   imageMode(CENTER);
