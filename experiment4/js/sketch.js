@@ -42,7 +42,7 @@ function setup() {
   fft = new p5.FFT();
   song.amp(0.5);
   angleMode(DEGREES);
-  song.play();
+  //song.play();
 }
 
 function draw() {
