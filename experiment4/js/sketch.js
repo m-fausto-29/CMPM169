@@ -34,7 +34,7 @@ function setup() {
 
     // Creating the play/pause button
   button = createButton('play');
-  button.position((width/2)-15, 1330);
+  button.position((width/2)-25, 1340);
   button.mousePressed(togglePlaying);
   
   // Initializing amplitude, frequency analysis, and angle mode
@@ -42,7 +42,6 @@ function setup() {
   fft = new p5.FFT();
   song.amp(0.5);
   angleMode(DEGREES);
-  //song.play();
 }
 
 function draw() {
