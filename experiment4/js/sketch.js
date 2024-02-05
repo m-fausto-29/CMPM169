@@ -7,14 +7,17 @@
 
 let cdPlayer;
 let cd;
-
-// Angle of rotation: the parameter that we'll animate!
+let song;
+let button;
+let fft;
+let amp;
 let angle = 0;
+let particles = [];
+
 function preload(){ //function necessary to preload the images
-  // cdPlayer = createImg('./img/cd_player.png', 'adding a cd player') 
-  // cd = createImg('./img/sony-cd-r.png', 'adding a cd')
-  cdPlayer = loadImage("./img/cd_player.png");
-  cd = loadImage("./img/sony-cd-r.png");
+  cdPlayer = loadImage("img/cd_player.png");
+  cd = loadImage("img/sony-cd-r.png");
+  song = loadSound('sound/newjeans_omg.mp3');
 }
 
 // setup() function is called once when the program starts
@@ -29,30 +32,124 @@ function setup() {
         resizeCanvas(canvasContainer.width(), canvasContainer.height());
     });
 
-    angleMode(DEGREES);
+    // Creating the play/pause button
+  button = createButton('play');
+  button.position((width/2)-10, 425);
+  button.mousePressed(togglePlaying);
   
-    // Background
-    for (let y = 0; y < height; y++) {
-      let inter = map(y, 0, height, 0, 1);
-      let c = lerpColor(color(255,192,203), color(135, 206, 235), inter);
-      stroke(c);
-      line(0, y, width,y); 
-     }
+  // Initializing amplitude, frequency analysis, and angle mode
+  amp = new p5.Amplitude();
+  fft = new p5.FFT();
+  song.amp(0.5);
+  angleMode(DEGREES);
+  song.play();
 }
 
 function draw() {
-  //background(220);
+  // Background
+  for (let y = 0; y < height; y++) {
+    let inter = map(y, 0, height, 0, 1);
+    let c = lerpColor(color(255,192,203), color(135, 206, 235), inter);
+    stroke(c);
+    line(0, y, width,y); 
+   }
+  
+  // Amplitude Circles
+  let vol = amp.getLevel();
+  let diam = map(vol, 0, 0.3, 10, 200);
+
+  fill(135, 206, 235);
+  noStroke();
+  ellipse(100,100, diam, diam);
+  ellipse(600,100, diam, diam);
+  fill(255,192,203);
+  noStroke();
+  ellipse(100,500, diam, diam);
+  ellipse(600,500, diam, diam);
+  
+  // Setting up positioning of cd player image
   imageMode(CENTER);
   image(cdPlayer, width/2, height/2, 250, 250);
-  // We'll be drawing a square in the center of our sketch that rotates around itself
-  push();
+  
+  // Translating the position of the cd
   translate(width/2, height/2);
 
-  // The angle of rotation is what we're animating (ie changing over time) so first we'll increase its value and then rotate to that angle
+   // Increase angle of rotation by one (animation)
   angle += 1;
   rotate(angle);
 
-  // Try changing the amount we add to the angle and see how the animation changes! (Hint: we can think of this as 'speed')
+  // Adjusting the position of cd image
   imageMode(CENTER);
   image(cd, 0, 0, 150, 150);
+  
+  //Radial Audio Visualizer
+  stroke(255);
+  noFill();
+  
+  //translate(width/2, height/2);
+  
+  let wave = fft.waveform();
+
+  for(let t = -1; t <= 1; t += 2){
+    beginShape()
+    for(let i = 0; i <= 180; i++){
+      let index = floor(map(i, 0, 180, 0, wave.length-1));
+      let r = map(wave[index], -1, 1, 150, 350);
+      let x = r * sin(i)*t;
+      let y = r * cos(i);
+      vertex(x,y);
+      //stroke(random(240,255));
+    }
+    endShape()
+  }
+  let p = new Particle();
+  particles.push(p);
+  
+  for(let i = particles.length-1; i >= 0; i--){
+    if(!particles[i].edges()){
+      particles[i].update();
+      particles[i].show();
+    }
+    else{
+      particles.splice(i,1);
+    }
+  }
+}
+
+// function that toggle the play/pause button for sound
+function togglePlaying() {
+  if (!song.isPlaying()) {
+    song.play();
+    button.html('pause');
+  } else {
+    song.pause();
+    button.html('play');
+  }
+}
+
+class Particle{
+  constructor(){
+    this.pos = p5.Vector.random2D().mult(250);
+    this.vel = createVector(0,0);
+    this.acc = this.pos.copy().mult(random(0.0001, 0.00001));
+    this.w = random(3, 5);
+    this.color = [random(200, 255), random(200, 255), random(200, 255)]
+  }
+  update(){
+    this.vel.add(this.acc);
+    this.pos.add(this.vel);
+  }
+  edges(){
+    if(this.pos.x < -width/2 || this.pos.x > width/2 || this.pos.y < -height/2 || this.pos.y > height/2){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+  show(){
+    noStroke();
+    fill(this.color);
+    ellipse(this.pos.x, this.pos.y, this.w)
+  }
 }
