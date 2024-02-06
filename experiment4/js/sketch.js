@@ -34,7 +34,7 @@ function setup() {
 
     // Creating the play/pause button
   button = createButton('play');
-  button.position((width/2), 1050);
+  button.position((width/2), 850);
   button.mousePressed(togglePlaying);
   
   // Initializing amplitude, frequency analysis, and angle mode
