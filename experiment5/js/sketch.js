@@ -14,6 +14,8 @@ let radiusY = 200; // Radius along y-axis
 let star;
 let bg;
 let grass;
+let cam;
+let particles = [];
 
 function preload(){
     star = loadModel('assets/star.obj'); // preloading .obj file
@@ -33,6 +35,9 @@ function setup() {
         console.log("Resizing...");
         resizeCanvas(canvasContainer.width(), canvasContainer.height());
     });
+    // Camera
+    cam = createCapture(VIDEO);
+    cam.hide()
 }
 
 // draw() function is called repeatedly, it's the main animation loop
@@ -69,6 +74,13 @@ function draw() {
     torus(200, 45); // ring shaped figure
     pop();
     
+    //Ring Fill
+    push();
+    normalMaterial();
+    rotateY(angle+30);
+    ellipsoid(70, 80, 80, 2, 8);
+    pop();
+    
     // Star Shape
     push();
     ambientLight(200,0,0); // lighter red ambient light
@@ -76,23 +88,34 @@ function draw() {
     specularMaterial(255, 0, 0);// red fill
     rotateX(55); // rotating its position to 55 radians
     rotateZ(angle); // rotate along the z axis
-    //scale(15, 15, 15); // adjusting model size
     scale(5); // adjusting the scale
     model(star); // inserting star.obj file
     pop();
     
-    // Revolving Sphere
+    // Revolving Plane
     push();
     translate(centerX,centerY,centerZ)
-    sphere(30);
+    texture(cam); // using webcam as texture
+    plane(50);
+    // Particles
+    let p = new Particle();
+    particles.push(p);
+    
+    for(let i = particles.length-1; i >= 0; i--){
+        if(!particles[i].edges()){ // if not outside canvas, appear otherwise remove
+        particles[i].update();
+        particles[i].show();
+        }
+        else{
+        particles.splice(i,1);
+        }
+    }
     pop();
     
     //Ground
     push();
-    //ambientLight(0, 255, 0);
     translate(0,215);
     rotateX(HALF_PI);
-    //ambientMaterial(0, 255, 0);
     texture(grass);
     plane(width+200,650);
     pop();
@@ -102,3 +125,31 @@ function draw() {
     angleX += 0.01;
     angleY += 0.01;
 }
+// Particle Class
+class Particle{
+    constructor(){
+      this.pos = p5.Vector.random2D().mult(30); // position
+      this.vel = createVector(0,0); //velocity
+      this.acc = this.pos.copy().mult(random(0.01, 0.001)); //acceleration
+      this.w = random(3, 5); //width
+      this.color = [random(128,128), random(238,144), random(230,255)] // randomly generated color
+    }
+    update(){ // updates the velocity and position of particles
+      this.vel.add(this.acc);
+      this.pos.add(this.vel);
+    }
+    edges(){ // if they reach outside the canvas, indicate when to remove the particles
+      if(this.pos.x < -width/2 || this.pos.x > width/2 || this.pos.y < -height/2 || this.pos.y > height/2){
+        return true;
+      }
+      else{
+        return false;
+      }
+    }
+    show(){ // appearance of the particles
+      noStroke();
+      fill(this.color);
+      ellipse(this.pos.x, this.pos.y, this.w)
+    }
+  }
+  
