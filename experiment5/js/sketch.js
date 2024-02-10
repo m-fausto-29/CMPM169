@@ -43,7 +43,7 @@ function setup() {
 // draw() function is called repeatedly, it's the main animation loop
 function draw() {
     // Background
-    background(220);
+    background(144, 238, 144);
     push();
     noStroke();
     translate(0,0,-1000);
