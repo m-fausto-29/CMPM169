@@ -12,7 +12,7 @@ let str_arr = [];
 let font;
 
 function preload() {
-  font = loadFont("Inconsolata.otf");
+  font = loadFont("Kingdom_Hearts_Font.ttf");
 }
 
 // setup() function is called once when the program starts
