@@ -38,9 +38,10 @@ function setup() {
 // draw() function is called repeatedly, it's the main animation loop
 function draw() {
     background(0);
+    // Background Plane
     push();
     ambientLight(155,155,200);
-    pointLight(135, 206, 235, width-1200, height/2, 350);
+    pointLight(135, 206, 235, width-1500, height/2, 350);
     specularMaterial(250);
     shininess(1); 
     noStroke();
@@ -50,7 +51,7 @@ function draw() {
     // Plane
     push();
     ambientLight(135, 206, 235);
-    pointLight(135, 206, 235, width-1200, height/2, 330);
+    pointLight(135, 206, 235, width-1500, height/2, 330);
     specularMaterial(250);
     shininess(1); 
     noStroke();
@@ -75,20 +76,20 @@ function draw() {
       strokeWeight(3);
       textSize(127);
       fill(random(128,128), random(238,144), random(230,255))
-      text(str1, width-1200, height/1.5);
+      text(str1, width-1500, height/1.5);
     }
     pop()
   }
-  function textNeon(glowColor){
+  function textNeon(glowColor){ // Neon Text Effect
     glow(glowColor, 400);
-    text(str1, width-1200, height/1.5);
-    text(str1, width-1200, height/1.5);
+    text(str1, width-1500, height/1.5);
+    text(str1, width-1500, height/1.5);
     glow(glowColor, 80);
-    text(str1, width-1200, height/1.5);
-    text(str1, width-1200, height/1.5);
+    text(str1, width-1500, height/1.5);
+    text(str1, width-1500, height/1.5);
     glow(glowColor, 12);
-    text(str1, width-1200, height/1.5);
-    text(str1, width-1200, height/1.5);
+    text(str1, width-1500, height/1.5);
+    text(str1, width-1500, height/1.5);
   }
   
   function glow(glowColor, blurriness){
