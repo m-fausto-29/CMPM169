@@ -51,7 +51,7 @@ function draw() {
     // strokeWeight(20);
     // rect(width*-50, -45, width*100, 90, 30);
     ambientLight(155,155,200);
-    pointLight(135, 206, 235, width/2, height/2, 350);
+    pointLight(135, 206, 235, width-900, height/2, 350);
     specularMaterial(250);
     shininess(1); 
     noStroke();
@@ -62,7 +62,7 @@ function draw() {
     //directionalLight(100, 100, 250, width/2, height/2, -1);
     push();
     ambientLight(135, 206, 235);
-    pointLight(135, 206, 235, width/2, height/2, 330);
+    pointLight(135, 206, 235, width-900, height/2, 330);
     specularMaterial(250);
     shininess(1); 
     noStroke();
@@ -104,21 +104,22 @@ function draw() {
       textNeon(color(135, 206, 235));
       strokeWeight(3);
       textSize(127);
-      fill(135, 206, 235)
-      text(str1, width/2, height/1.5);
+      //fill(135, 206, 235)
+      fill(random(128,128), random(238,144), random(230,255))
+      text(str1, width-900, height/1.5);
     }
     pop()
   }
   function textNeon(glowColor){
     glow(glowColor, 400);
-    text(str1, width/2, height/1.5);
-    text(str1, width/2, height/1.5);
+    text(str1, width-900, height/1.5);
+    text(str1, width-900, height/1.5);
     glow(glowColor, 80);
-    text(str1, width/2, height/1.5);
-    text(str1, width/2, height/1.5);
+    text(str1, width-900, height/1.5);
+    text(str1, width-900, height/1.5);
     glow(glowColor, 12);
-    text(str1, width/2, height/1.5);
-    text(str1, width/2, height/1.5);
+    text(str1, width-900, height/1.5);
+    text(str1, width-900, height/1.5);
   }
   
   function glow(glowColor, blurriness){
