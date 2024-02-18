@@ -31,9 +31,6 @@ function setup() {
         let x = random(-(width * 2), width * 2);
         let y = random(-(height * 2), height * 2);
         let z = random(-width*5, width*2);
-        // let x = random(-(width / 2), width / 2);
-        // let y = random(-(height / 2), height / 2);
-        // let z = random(-width/5, width/2);
         str_arr.push(new Type(strs[i%strs.length], x, y, z));
     }
 }
@@ -41,17 +38,9 @@ function setup() {
 // draw() function is called repeatedly, it's the main animation loop
 function draw() {
     background(0);
-    // Glowing Rectangle
     push();
-    // drawingContext.shadowOffsetX = 5;
-    // drawingContext.shadowOffsetY = -5;
-    // drawingContext.shadowBlur = 10;
-    // drawingContext.shadowColor = 'blue';
-    // noFill();
-    // strokeWeight(20);
-    // rect(width*-50, -45, width*100, 90, 30);
     ambientLight(155,155,200);
-    pointLight(135, 206, 235, width-900, height/2, 350);
+    pointLight(135, 206, 235, width-1200, height/2, 350);
     specularMaterial(250);
     shininess(1); 
     noStroke();
@@ -59,32 +48,14 @@ function draw() {
     pop();
     
     // Plane
-    //directionalLight(100, 100, 250, width/2, height/2, -1);
     push();
     ambientLight(135, 206, 235);
-    pointLight(135, 206, 235, width-900, height/2, 330);
+    pointLight(135, 206, 235, width-1200, height/2, 330);
     specularMaterial(250);
     shininess(1); 
     noStroke();
     plane(width*100, 200);
     pop();
-    
-    // // Glowing Rectangle
-    // push();
-    // // drawingContext.shadowOffsetX = 5;
-    // // drawingContext.shadowOffsetY = -5;
-    // // drawingContext.shadowBlur = 10;
-    // // drawingContext.shadowColor = 'blue';
-    // // noFill();
-    // // strokeWeight(20);
-    // // rect(width*-50, -45, width*100, 90, 30);
-    // ambientLight(10, 10, 100);
-    // pointLight(10, 10, 100, width/2, height/2, 50);
-    // specularMaterial(250);
-    // shininess(1); 
-    // noStroke();
-    // plane(width*100, 120);
-    // pop();
     
     orbitControl();
     let count = str_arr.length;
@@ -100,26 +71,24 @@ function draw() {
       textFont(font);
       strokeWeight(3);
       textSize(128);
-      //fill(0,0,100);
       textNeon(color(135, 206, 235));
       strokeWeight(3);
       textSize(127);
-      //fill(135, 206, 235)
       fill(random(128,128), random(238,144), random(230,255))
-      text(str1, width-900, height/1.5);
+      text(str1, width-1200, height/1.5);
     }
     pop()
   }
   function textNeon(glowColor){
     glow(glowColor, 400);
-    text(str1, width-900, height/1.5);
-    text(str1, width-900, height/1.5);
+    text(str1, width-1200, height/1.5);
+    text(str1, width-1200, height/1.5);
     glow(glowColor, 80);
-    text(str1, width-900, height/1.5);
-    text(str1, width-900, height/1.5);
+    text(str1, width-1200, height/1.5);
+    text(str1, width-1200, height/1.5);
     glow(glowColor, 12);
-    text(str1, width-900, height/1.5);
-    text(str1, width-900, height/1.5);
+    text(str1, width-1200, height/1.5);
+    text(str1, width-1200, height/1.5);
   }
   
   function glow(glowColor, blurriness){
@@ -148,8 +117,6 @@ function draw() {
       textAlign(CENTER, CENTER);
       textFont(font);
       textSize(100);
-      //fill(0,0,100);
-      //fill(random(128,128), random(238,144), random(230,255))
       fill(random(100,255), random(100,255), random(100,255))
       text(this.str, 0, 0);
       pop();
