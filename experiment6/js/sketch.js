@@ -41,7 +41,7 @@ function draw() {
     // Background Plane
     push();
     ambientLight(155,155,200);
-    pointLight(135, 206, 235, width-1500, height/2, 350);
+    pointLight(135, 206, 235, width-1500, height/2, 650);
     specularMaterial(250);
     shininess(1); 
     noStroke();
@@ -51,7 +51,7 @@ function draw() {
     // Plane
     push();
     ambientLight(135, 206, 235);
-    pointLight(135, 206, 235, width-1500, height/2, 330);
+    pointLight(135, 206, 235, width-1500, height/2, 630);
     specularMaterial(250);
     shininess(1); 
     noStroke();
